@@ -3,11 +3,10 @@ import Image from 'next/image'
 
 import { formatDate } from '@/lib/utils'
 import MDXContent from '@/components/mdx-content'
-// import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getPosts, getPostBySlug } from '@/lib/posts'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
 import { notFound } from 'next/navigation'
-// import NewsletterForm from '@/components/newsletter-form'
+import NewsletterForm from '@/components/newsletter-form'
 
 export async function generateStaticParams() {
   const posts = await getPosts()
@@ -17,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-  const { slug } =await params
+  const { slug } = params
   const post = await getPostBySlug(slug)
 
   if (!post) {
@@ -61,7 +60,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
         </main>
 
         <footer className='mt-16'>
-          {/* <NewsletterForm /> */}
+          <NewsletterForm />
         </footer>
       </div>
     </section>
